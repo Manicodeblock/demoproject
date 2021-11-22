@@ -1,0 +1,112 @@
+In this project we have to test automation scripts in nopcommerce website
+
+first install packages
+1.selenium
+2.pytest
+3.pytest-html
+4.pytest-xdist
+this installations are through
+file --> settings -->project --> interpreter settings -->click plus button search
+a file and add the packages install button
+
+#here html report generation code is in conftest.py file
+
+#to run a test_login file normally but add a browser as argument
+#example:pytest -v -s path.filename.py --firefox
+
+#to run a test_login with browser and number of test cases
+#pytest -s -v -n=2 /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/test_login.py --browser chrome
+
+#to run with html report after adding plugins(pytest-xdist)
+pytest -s -v -n=2 --html=path of folder/report.html /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/test_login.py --browser chrome
+
+Error: no log caputured in html reprt
+Solution:
+https://github.com/pytest-dev/pytest-html/issues/444
+just change the plugin version html-pytest into 2.0
+
+# pytest -s -v --html=/home/ticvictech/PycharmProjects/nopcommerceProject/Reports/reportnov.html home/ticvictech/PycharmProjects/nopcommerceProject/testCases/test_login_ddt.py --browser chrome
+# pytest -v -s /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/test_login_ddt.py
+
+
+#groping
+#---------------
+# here groping is a method to run many test cases at a single command
+#sanity and regression test are available in groping
+#first set pytest.ini file
+#then set sanity or regression or both for a methods in a test cases files
+#run test in terminal as follows
+
+#pytes -s -v -m "sanity" --html=report folder path/filename.html testcases/ --browser chrome
+
+#here "sanity" means which testmethods under sanity it will run . testcases is the folder
+#name contains testcase py files
+#because these method we dont mention a file name mention a folder name contains the py files
+
+
+#pytes -s -v -m "sanity or regression" --html=report folder path/filename.html testcases --browser chrome
+#these command run test cases under the folder which test cases having regression or sanity any one
+
+
+#pytes -s -v -m "sanity and regression" --html=report folder path/filename.html testcases --browser chrome
+#these command run test cases under the folder which test cases having regression and sanity both
+
+#sample output command
+ pytest -s -v -m "sanity" --html=Reports/sanitysample.html /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/ --browser chrome
+
+
+
+#Run .bat file and run in command prompt
+#---------------------------------------
+# it is a executable file (.bat) run the test case just double click its very easy
+#this running method is not in pycharm terminal assusual rather
+#first copy the prject path and so inside this all the folders and files
+#now open a project file name in normal view it will shows a folder and files here create
+# new file file-->new-->textfile name filename.bat extension
+#example(run.bat)
+#right click-->edit-->here we .bat file not support in ubuntu so we move on
+#shellscript .sh file
+
+just go to the file path in terminal and
+command
+touch demo.sh
+touch is a command for create a new file
+reference https://www.youtube.com/watch?v=aVr0P2EE3zo  from 15 minutes
+ now we create a .sh file because it is ubuntu by linux os
+ open a file and text your comand as like in pycharm terminal for running a file
+
+ Example
+ -----------
+ pytest -s -v -m "sanity" --html=Reports/sanitysample.html /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/ --browser chrome
+rem pytest -s -v -m "sanity or regression" --html=Reports/sanitysample.html /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/ --browser chrome
+rem pytest -s -v -m "sanity and regression" --html=Reports/sanitysample.html /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/ --browser chrome
+rem pytest -s -v -m "regression" --html=Reports/sanitysample.html /home/ticvictech/PycharmProjects/nopcommerceProject/testCases/ --browser chrome
+
+https://www.youtube.com/watch?v=aVr0P2EE3zo 25th minute
+here four lines are availabel thats four different grouping commands
+
+when we double click this .sh file first command will execute why beacause i create rest of
+the three commands as REM which is remove if want to run a second command make it remove REM
+and make first command as REM
+and important thing here we can follow some steps for execute .sh file in ubuntu
+-------------------------------------
+GUI method to run . sh file
+Select the file using mouse.
+Right-click on the file.
+Choose Properties:
+Click Permissions tab.
+Select Allow executing file as a program:
+Now click the file name and you will be prompted.
+ Select “Run in the terminal” and it will get executed in the terminal.
+
+important
+------------------
+https://www.youtube.com/watch?v=p9sJGwGsO3E
+these is reference for after creating a .sh file how to run these
+ 1. cd loation of filename(demo.sh)
+ 2.sudo chmod +x demo.sh
+ 3. ./demo.sh
+ -------------
+ chmod +x is for make it executable file
+ ./demo.sh for execute file
+
